@@ -5,12 +5,14 @@ import HomeScreen from './HomeScreen';
 import CalculatorScreen from './CalculatorScreen';
 import CalculatorModifiedScreen from './CalculatorModifiedScreen';
 import ShoppingListScreen from './ShoppingListScreen';
+import GuessingGameScreen from './GuessingGameScreen';
 
 const MyApp = StackNavigator ({
   Home: {screen: HomeScreen},
   Calculator: {screen: CalculatorScreen},
   CalculatorModified: {screen: CalculatorModifiedScreen},
-  ShoppingList: {screen: ShoppingListScreen}
+  ShoppingList: {screen: ShoppingListScreen},
+  GuessingGame: {screen: GuessingGameScreen}
 });
 
 export default class App extends React.Component {

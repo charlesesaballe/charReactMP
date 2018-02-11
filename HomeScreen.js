@@ -21,6 +21,10 @@ export default class CalculatorScreen extends React.Component {
                     <View>
                         <Button onPress={() => navigate('ShoppingList')} title="Shopping List" />
                     </View>
+
+                    <View>
+                        <Button onPress={() => navigate('GuessingGame')} title="Guessing Game" />
+                    </View>
                 </View>
             </View>
         );
