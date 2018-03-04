@@ -1,5 +1,5 @@
 import React from 'react';
-import {Alert, Button, TextInput, StyleSheet, Text, View, AsyncStorage } from 'react-native';
+import {Alert, Button, TextInput, StyleSheet, Text, View, Image, FlatList } from 'react-native';
 import {StackNavigator} from 'react-navigation';
 
 export default class RecipeFinder extends React.Component {
@@ -7,15 +7,15 @@ export default class RecipeFinder extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {recipe: [], ingredient: ''};
+        this.state = {recipes: [], ingredient: ''};
       }
 
-    getRecipe = () => {
-    const url = 'http://www.recipepuppy.com/api/?i=' + this.state.ingredient;
+    findRecipe = () => {
+      const url = "http://www.recipepuppy.com/api/?i=" + this.state.ingredient;
     fetch(url)
         .then((response) => response.json())
         .then((responseJson) => { 
-        this.setState({jobs: responseJson});
+        this.setState({recipes: responseJson.results});
         })
         .catch((error) => { 
         Alert.alert(error); 
@@ -23,34 +23,34 @@ export default class RecipeFinder extends React.Component {
     }
 
     listSeparator = () => {
-        return (
-          <View
-            style={{
-              height: 1,
-              width: "80%",
-              backgroundColor: "#CED0CE",
-              marginLeft: "10%"
-            }}
-          />
-        );
-      };
+      return (
+        <View style={{
+          height: 1,
+          width: "90%",
+          backgroundColor: "#42bff4"
+        }}/>     
+      );
+    }
     
       render() {
         return (
           <View style={styles.container}>
-            <StatusBar hidden={true} />
+
             <FlatList 
-              style={{marginLeft : "5%"}}
               keyExtractor={item => item.title} 
-              renderItem={({item}) => 
-                <Text style={styles.textStyle}>{item.title}</Text>} 
+              renderItem={({item}) =>
+                <View> 
+                  <Text style={styles.textStyle} key={item.id}>{item.title}</Text>
+                  <Image style={styles.imageStyle} source={{uri: item.thumbnail}}/>
+                </View>
+              } 
                 
-                data={this.state.recipe} 
+                data={this.state.recipes} 
             
-                ItemSeparatorComponent={this.listSeparator} /> 
-                
-                <TextInput style={styles.textInput} placeholder='location' onChangeText={(ingredient) => this.setState({ingredient})} />
-                <Button title="Find" onPress={this.getRecipe} />
+                ItemSeparatorComponent={this.listSeparator} 
+            />     
+                <TextInput style={styles.textInput} onChangeText={(ingredient) => this.setState({ingredient})} value={this.state.ingredient} />
+                <Button title="Find" onPress={this.findRecipe} />
           </View>
         );
       }
@@ -64,16 +64,24 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         justifyContent: 'center',
         alignItems: 'center',
+        marginTop: 15
     },
     textInput: {
         fontSize: 18, 
-        width: 200
+        width: 200,
+        height: 30,
+        marginBottom: 5,
+        marginTop: 5
     },
     textStyle: {
         fontSize: 18,
         width: 200,
         borderColor: 'gray',
         borderWidth: 2,
+    },
+    imageStyle: {
+        width: 50, 
+        height: 50
     },
     buttonView: {
         flex: 1,
