@@ -1,5 +1,5 @@
 import React from 'react';
-import {Alert, Button, TextInput, StyleSheet, Text, View } from 'react-native';
+import {Alert, Button, TextInput, StyleSheet, Text, View, AsyncStorage } from 'react-native';
 import {StackNavigator} from 'react-navigation';
 
 export default class App extends React.Component {
@@ -7,27 +7,69 @@ export default class App extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state= {number:'', randomNumber: Math.floor(Math.random() * 100) + 1, counter: 0, result: 'Guess a number between 1-100' }
+    this.state= {
+      number:'', 
+      randomNumber: Math.floor(Math.random() * 100) + 1, 
+      guessCounter: 0, 
+      result: 'Guess a number between 1-100', 
+      highscore: 9999 }
   }
 
   
-    guessNumber = () => {
-    const guess = parseInt(this.state.number)
+  guessNumber = () => {
+    const guess = parseInt(this.state.number);
+    this.setState({
+      guessCounter: this.state.guessCounter + 1
+    })
+  
+    if(guess < this.state.randomNumber) {
+      this.setState(
+        {result: 'Your guess ' + guess + ' is too low.'}
+      );
+    } else if(guess > this.state.randomNumber) {
+      this.setState(
+        {result: 'Your guess ' + guess + ' is too high.'}
+      );
+    } else {
+        Alert.alert('You guessed the number in ' + (this.state.guessCounter + 1) + ' guesses.');
+        this.setState({
+          guessCounter: 0, 
+          randomNumber: Math.floor(Math.random() * 100) + 1, 
+        });
+        this.compareScores();
+    }
+  };
 
-      if(guess < this.state.randomNumber) {
-        this.setState(
-          {result: 'Your guess ' + guess + ' is too low.', counter: this.state.counter + 1}
-        );
-      } else if(guess > this.state.randomNumber) {
-        this.setState(
-          {result: 'Your guess ' + guess + ' is too high.', counter: this.state.counter + 1}
-        );
-      } else {
-          Alert.alert('You guessed the number in ' + (this.state.counter + 1) + ' guesses.');
-      }
-    };
+  compareScores = () => {
+    if (this.state.highscore == 9999) {
+      this.setState({highscore: JSON.stringify(this.state.guessCounter + 1)});
+    } else if (this.state.guessCounter + 1 < this.state.highscore) {
+      this.setState({highscore: JSON.stringify(this.state.guessCounter + 1)});
+      
+    }
+    this.saveHighest();
+    this.readHighest();
+  }
+
+  saveHighest = async () => {
+    try {
+      await AsyncStorage.setItem('highest', JSON.stringify(this.state.highscore));
+    } catch (error) {
+      Alert.alert('Error saving data');
+    }
+  }
+
+  readHighest = async () => {
+    try {
+      let highestscore = await AsyncStorage.getItem('highest');
+      this.setState({highscore: this.state.highscore});
+    } catch (error) {
+      Alert.alert('Error reading data');
+    }
+  }
 
   render() {
+
     return (
       <View style={styles.container}>
         <Text>{this.state.result}</Text>
@@ -37,6 +79,8 @@ export default class App extends React.Component {
           value={this.state.number}/>
 
         <Button onPress={this.guessNumber} title="MAKE A GUESS" />
+
+        <Text>Highscore:  {this.state.highscore} guesses.</Text>
 
       </View>
     );

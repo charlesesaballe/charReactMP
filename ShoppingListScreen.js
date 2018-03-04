@@ -5,10 +5,10 @@ import {StackNavigator} from 'react-navigation';
 export default class ShoppingListScreen extends React.Component {
   static navigationOptions = {title: 'ShoppingList'};
 
-constructor(props) {
+  constructor(props) {
     super(props);
     this.state = {shoppingItem: '', data: []}
-    }
+  }
 
     buttonAdd = () => {
     this.setState({data: [...this.state.data, {key: [this.state.shoppingItem]}]});
