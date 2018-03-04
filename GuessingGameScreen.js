@@ -12,7 +12,7 @@ export default class App extends React.Component {
       randomNumber: Math.floor(Math.random() * 100) + 1, 
       guessCounter: 0, 
       result: 'Guess a number between 1-100', 
-      highscore: 9999 }
+      highscore: '' }
   }
 
   
@@ -41,7 +41,7 @@ export default class App extends React.Component {
   };
 
   compareScores = () => {
-    if (this.state.highscore == 9999) {
+    if (this.state.highscore == '') {
       this.setState({highscore: JSON.stringify(this.state.guessCounter + 1)});
     } else if (this.state.guessCounter + 1 < this.state.highscore) {
       this.setState({highscore: JSON.stringify(this.state.guessCounter + 1)});
