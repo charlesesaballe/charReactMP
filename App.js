@@ -8,6 +8,8 @@ import ShoppingListScreen from './ShoppingListScreen';
 import GuessingGameScreen from './GuessingGameScreen';
 import RecipeFinderScreen from './RecipeFinder';
 import EuroConverterScreen from './EuroConverterScreen';
+import FindAddressScreen from './FindAddressScreen';
+import FindRestaurantScreen from './FindRestaurantScreen'
 
 const MyApp = StackNavigator ({
   Home: {screen: HomeScreen},
@@ -16,7 +18,9 @@ const MyApp = StackNavigator ({
   ShoppingList: {screen: ShoppingListScreen},
   GuessingGame: {screen: GuessingGameScreen},
   RecipeFinder: {screen: RecipeFinderScreen},
-  EuroConverter: {screen: EuroConverterScreen}
+  EuroConverter: {screen: EuroConverterScreen},
+  FindAddress: {screen: FindAddressScreen},
+  FindRestaurant: {screen: FindRestaurantScreen}
 });
 
 export default class App extends React.Component {

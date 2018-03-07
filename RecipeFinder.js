@@ -71,13 +71,12 @@ const styles = StyleSheet.create({
         width: 200,
         height: 30,
         marginBottom: 5,
-        marginTop: 5
+        marginTop: 5,
+        alignItems: 'center',
     },
     textStyle: {
         fontSize: 18,
         width: 200,
-        borderColor: 'gray',
-        borderWidth: 2,
     },
     imageStyle: {
         width: 50, 
