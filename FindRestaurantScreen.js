@@ -51,6 +51,7 @@ export default class FindRestaurantScreen extends React.Component {
             })
           })
 
+
           .catch((error) => {
             Alert.alert(JSON.stringify(error));
           });

@@ -9,7 +9,10 @@ import GuessingGameScreen from './GuessingGameScreen';
 import RecipeFinderScreen from './RecipeFinder';
 import EuroConverterScreen from './EuroConverterScreen';
 import FindAddressScreen from './FindAddressScreen';
-import FindRestaurantScreen from './FindRestaurantScreen'
+import FindRestaurantScreen from './FindRestaurantScreen';
+import ShoppingListDBScreen from './ShoppingListDBScreen';
+import ShoppingListPolishedScreen from './ShoppingListPolishedScreen';
+import LocationScreen from './LocationScreen';
 
 const MyApp = StackNavigator ({
   Home: {screen: HomeScreen},
@@ -20,7 +23,10 @@ const MyApp = StackNavigator ({
   RecipeFinder: {screen: RecipeFinderScreen},
   EuroConverter: {screen: EuroConverterScreen},
   FindAddress: {screen: FindAddressScreen},
-  FindRestaurant: {screen: FindRestaurantScreen}
+  FindRestaurant: {screen: FindRestaurantScreen},
+  Location: {screen: LocationScreen},
+  ShoppingListDB: {screen: ShoppingListDBScreen},
+  ShoppingListPolished: {screen: ShoppingListPolishedScreen}
 });
 
 export default class App extends React.Component {

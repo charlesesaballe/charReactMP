@@ -10,36 +10,48 @@ export default class CalculatorScreen extends React.Component {
         return (
             <View style={styles.container}>
                 <View style={styles.buttonView}>
-                    <View>
+                    <View style={styles.buttonView}>
                         <Button onPress={() => navigate('Calculator')} title="Calculator" />
                     </View>
                     
-                    <View>
+                    <View style={styles.buttonView}>
                         <Button onPress={() => navigate('CalculatorModified')} title="Calculator Modified" />
                     </View>
                     
-                    <View>
+                    <View style={styles.buttonView}>
                         <Button onPress={() => navigate('ShoppingList')} title="Shopping List" />
                     </View>
 
-                    <View>
+                    <View style={styles.buttonView}>
                         <Button onPress={() => navigate('GuessingGame')} title="Guessing Game" />
                     </View>
 
-                    <View>
+                    <View style={styles.buttonView}>
                         <Button onPress={() => navigate('RecipeFinder')} title="Recipe Finder" />
                     </View>
 
-                    <View>
+                    <View style={styles.buttonView}>
                         <Button onPress={() => navigate('EuroConverter')} title="Euro Converter" />
                     </View>
 
-                    <View>
+                    <View style={styles.buttonView}>
                         <Button onPress={() => navigate('FindAddress')} title="Find Address" />
                     </View>
 
-                    <View>
+                    <View style={styles.buttonView}>
                         <Button onPress={() => navigate('FindRestaurant')} title="Find Restaurant" />
+                    </View>
+
+                    <View style={styles.buttonView}>
+                        <Button onPress={() => navigate('Location')} title="Current Location" />
+                    </View>
+
+                    <View style={styles.buttonView}>
+                        <Button onPress={() => navigate('ShoppingListDB')} title="Shopping List DB" />
+                    </View>
+
+                    <View style={styles.buttonView}>
+                        <Button onPress={() => navigate('ShoppingListPolished')} title="Shopping List Polished" />
                     </View>
                 </View>
             </View>
@@ -69,7 +81,7 @@ const styles = StyleSheet.create({
       flexDirection: 'column',
       justifyContent: 'space-around',
       alignItems: 'center',
-      padding: 50,
+      padding: 5,
       width: 500,
     }
   });
