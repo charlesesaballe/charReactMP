@@ -39,8 +39,9 @@ export default class EuroConverter extends React.Component {
           <Image style={styles.imageStyle} source={{uri:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRpJJqjk-pUdhQixRxqJ8OJYXl5pMBso4YzdJyb9y0-tLgV1Pzq'}}/>
           <Text style={styles.textStyle}>{this.state.euroValue} €</Text>
           <View style={{flexDirection:'row', marginTop: 20}}>
-            <Button title="CONVERT" onPress={ this.GetSelectedPickerItem } />
+            
             <TextInput style={styles.textInput} keyboardType="numeric" onChangeText={(inputValue)=> this.setState({inputValue})}/>  
+            
             <Picker style={styles.pickerStyle}
                 selectedValue={this.state.PickerValue} 
                 onValueChange={(itemValue) => this.setState({PickerValue: itemValue})} >
@@ -52,10 +53,9 @@ export default class EuroConverter extends React.Component {
                 <Picker.Item label="SEK" value={this.state.conversionRates.SEK} />
                 <Picker.Item label="USD" value={this.state.conversionRates.USD} /> 
             </Picker>
-          </View>       
-          
-             
-
+            </View>
+            <Button title="CONVERT" onPress={ this.GetSelectedPickerItem } />
+                 
          </View>
        );
      }
@@ -71,9 +71,9 @@ const styles = StyleSheet.create({
     },
     textInput: {
         width: 100,
-        height: 30,
-        borderColor: 'gray',
-        borderWidth: 2,
+        height: 40,
+        fontSize: 18,
+        justifyContent: 'center',
     },
     textStyle: {
         fontSize: 18,
@@ -88,6 +88,7 @@ const styles = StyleSheet.create({
     },
     pickerStyle: {
         width: 100,
+        height: 40,
         borderWidth: 2,
         borderColor: 'gray',
     },
