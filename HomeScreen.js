@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import { Button } from 'react-native-elements';
 
-export default class CalculatorScreen extends React.Component {
+export default class HomeScreen extends React.Component {
     static navigationOptions = {title: 'Home'};
 
     render() {
@@ -33,6 +33,8 @@ export default class CalculatorScreen extends React.Component {
                         <Button onPress={() => navigate('ShoppingListDB')} title="Shopping List DB" buttonStyle={styles.buttonViewStyle} />
 
                         <Button onPress={() => navigate('ShoppingListPolished')} title="Shopping List Polished" buttonStyle={styles.buttonViewStyle} />
+                    
+                        <Button onPress={() => navigate('MyPlaces')} title="My Places" buttonStyle={styles.buttonViewStyle} />
                     </View>
 
             </View>

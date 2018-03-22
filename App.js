@@ -13,6 +13,8 @@ import FindRestaurantScreen from './FindRestaurantScreen';
 import ShoppingListDBScreen from './ShoppingListDBScreen';
 import ShoppingListPolishedScreen from './ShoppingListPolishedScreen';
 import LocationScreen from './LocationScreen';
+import MyPlacesScreen from './MyPlacesScreen';
+import MyPlacesMap from './MyPlacesMap';
 
 const MyApp = StackNavigator ({
   Home: {screen: HomeScreen},
@@ -26,7 +28,9 @@ const MyApp = StackNavigator ({
   FindRestaurant: {screen: FindRestaurantScreen},
   Location: {screen: LocationScreen},
   ShoppingListDB: {screen: ShoppingListDBScreen},
-  ShoppingListPolished: {screen: ShoppingListPolishedScreen}
+  ShoppingListPolished: {screen: ShoppingListPolishedScreen},
+  MyPlaces: {screen: MyPlacesScreen},
+  MyPlacesMap: {screen: MyPlacesMap}
 });
 
 export default class App extends React.Component {
